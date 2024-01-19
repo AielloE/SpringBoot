@@ -26,7 +26,7 @@ public class ProgettoLibreriaApplication implements CommandLineRunner {
 		iLibroRep.save(libro);
 
 		Utente utente = new Utente("prova", "prova", "prova", "provaprova");
-		
+
 		UtenteLibro utenteLibro = new UtenteLibro();
 		utenteLibro.setUtente(utente);
 		utenteLibro.setLibro(libro);

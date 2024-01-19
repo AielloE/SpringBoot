@@ -2,72 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dettaglio Libro</title>
+    <title>Book Detail</title>
     <style>
-        body {
 
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            text-align: center;
-            margin: 50px;
-        }
-
-        table {
-            margin-top: 30px;
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            border: 1px solid #dee2e6;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #4CAF50;
-            color: #fff;
-        }
-
-        tbody tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
+        .button {
             text-decoration: none;
-            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
             background-color: #4CAF50;
+            color: white;
+            border: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4; /* Set a background color for the body */
         }
 
-        a:hover {
+        .card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+            background-color: white; /* Set a background color for the card */
+        }
+
+        p {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-<table>
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>Autore</th>
-        <th>Descrizione</th>
-        <th>Cancella</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td th:text="${libro.getTitolo()}"></td>
-        <td th:text="${libro.getAutore()}"></td>
-        <td th:text="${libro.getDescrizione()}"></td>
-        <td> <a th:href="@{/remove(libroId=${libro.getId()})}"> Rimuovi libro </a></td>
-    </tr>
-    </tbody>
-</table>
-<a href="/home">Torna alla home</a>
+<div class="card">
+    <h1>Dettaglio Libro</h1>
+    <div>
+        <p><strong>Book Title:</strong></p>
+        <p th:text="${libro.getTitolo()}"></p>
+    </div>
+    <div>
+        <p><strong>Author:</strong></p>
+        <p th:text="${libro.getAutore()}"></p>
+    </div>
+    <div>
+        <p><strong>Description:</strong></p>
+        <p th:text="${libro.getDescrizione()}"></p>
+    </div>
+    <div>
+
+        <a th:href="@{/remove(libroId=${libro.getId()})}" class="button">Elimina Libro</a>
+    </div>
+</div>
 </body>
 </html>

@@ -83,7 +83,6 @@
     <thead>
     <tr>
         <th>Title</th>
-        <th>Dettaglio</th>
         <th>Modifica</th>
         <th>Preferiti</th>
         <th>Cancella</th>
@@ -91,8 +90,7 @@
     </thead>
     <tbody>
     <tr th:each="libro : ${libri}">
-        <td th:text="${libro.titolo}"></td>
-        <td> <a th:href="@{/dettaglio(libroId=${libro.getId()})}"> Dettaglio libro </a></td>
+        <td> <a th:href="@{/dettaglio(libroId=${libro.getId()})}" th:text="${libro.titolo}"> </a></td>
         <td> <a th:href="@{/modifica(libroId=${libro.getId()})}"> Modifica libro </a></td>
         <td> <a th:href="@{/preferiti(libroId=${libro.getId()})}"> Aggiungi Preferiti </a></td>
         <td> <a th:href="@{/remove(libroId=${libro.getId()})}"> Rimuovi libro </a></td>
