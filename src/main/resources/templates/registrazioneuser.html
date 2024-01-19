@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .card {
+            border: 1px solid #4CAF50;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+<h1>Registration</h1>
+
+<form action="#" th:action="@{/postRegistrazione}" th:object="${persona}" method="post">
+    <table>
+        <tr>
+            <td>Nome:</td>
+            <td><input type="text" th:field="*{nome}" /></td>
+            <td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Name Error</td>
+        </tr>
+        <tr>
+            <td>Cognome:</td>
+            <td><input type="text" th:field="*{cognome}" /></td>
+            <td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}">Surname Error</td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td><input type="text" th:field="*{username}" /></td>
+            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" th:field="*{password}" /></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+        </tr>
+        <tr>
+            <td colspan="3"><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+</html>

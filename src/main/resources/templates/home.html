@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #343a40;
+        }
+
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #343a40;
+        }
+
+        table {
+            margin-top: 15px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+<h1>Home</h1>
+<a href="/profilo">Visualizza Profilo</a>
+<a href="/createBook">Aggiungi un libro</a>
+
+<h2>I miei Libri</h2>
+<table th:if="${not #lists.isEmpty(preferiti)}">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Dettaglio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="libro : ${preferiti}">
+        <td th:text="${libro.titolo}"></td>
+        <td> <a th:href="@{/dettaglio(libroId=${libro.getId()})}"> Dettaglio libro </a></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Tutti i Libri</h2>
+<table th:if="${not #lists.isEmpty(libri)}">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Dettaglio</th>
+        <th>Modifica</th>
+        <th>Preferiti</th>
+        <th>Cancella</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="libro : ${libri}">
+        <td th:text="${libro.titolo}"></td>
+        <td> <a th:href="@{/dettaglio(libroId=${libro.getId()})}"> Dettaglio libro </a></td>
+        <td> <a th:href="@{/modifica(libroId=${libro.getId()})}"> Modifica libro </a></td>
+        <td> <a th:href="@{/preferiti(libroId=${libro.getId()})}"> Aggiungi Preferiti </a></td>
+        <td> <a th:href="@{/remove(libroId=${libro.getId()})}"> Rimuovi libro </a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
